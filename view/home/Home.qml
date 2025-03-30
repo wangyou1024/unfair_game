@@ -26,7 +26,7 @@ Item{
             anchors.top: parent.top
             anchors.left:parent.left
             anchors.leftMargin: parent.width/5
-            anchors.topMargin: 10
+            anchors.topMargin: 50
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -107,7 +107,7 @@ Item{
             anchors.left:rankTitle.left
 
             Text{
-                text: "1000/1201"
+                text: viewModel.rank+"/1200"
                 color: "white"
                 font.pixelSize: 15
                 anchors.centerIn: parent
@@ -217,7 +217,7 @@ Item{
             border.color: accountRec.border.color
             anchors.top: goldCoin.bottom
             anchors.left:goldCoin.left
-            anchors.topMargin: 20
+            anchors.topMargin: 50
             Text{
                 text: "对战"
                 color: "white"

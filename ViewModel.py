@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QObject, pyqtProperty, pyqtSignal, pyqtSlot, QTimer
-
+import random
 
 class ViewModel(QObject):
     HOME_PAGE = "home"
@@ -8,6 +8,7 @@ class ViewModel(QObject):
     WAIT_PROPOSAL_PAGE = "wait_proposal"
     PROPOSAL_PAGE = "proposal"
     RESULT_PAGE = "result"
+    START_OVER="start_over"
 
     def __init__(self):
         super().__init__()
@@ -17,14 +18,29 @@ class ViewModel(QObject):
         self._wealth = 100
         self._rank = 1000
         self._current_page = self.HOME_PAGE
-
-
+        self._randomValue = 1
+        self._matcherAccountNum=234
+        # # init
+        # self.personList = [100+20, 100+40, 100+60, 15000]
+        #
+        # # matching
+        # self.matcherIndex = random.randint(0, len(self.personList)-1)
+        # # self._matcherName = ""
+        # self.matcherAccountNum = self.personList[self.matcherIndex]
+        #
+        # # result
+        # # self.matcherAccountNum = self.matcherAccountNum + 10-proposal
+        # self.personList[self.matcherIndex] = self.personList[self.matcherIndex] + 10-self.randomValue
+        #
+        
     contentWidthChanged = pyqtSignal(int)
     contentHeightChanged = pyqtSignal(int)
     nameChanged = pyqtSignal(str)
     wealthChanged = pyqtSignal(int)
     rankChanged = pyqtSignal(int)
     currentPageChanged = pyqtSignal(str)
+    randomValueChanged = pyqtSignal(int)
+    matcherAccountNumChanged = pyqtSignal(int)
 
     @pyqtSlot()
     def openHome(self):
@@ -42,44 +58,76 @@ class ViewModel(QObject):
     @pyqtSlot()
     def openWaitProposal(self):
         self.currentPage = self.WAIT_PROPOSAL_PAGE
+        QTimer.singleShot(1000, self.openProposal)
 
     @pyqtSlot()
     def openProposal(self):
+        self.randomValue = random.randint(1, 3)
         self.currentPage = self.PROPOSAL_PAGE
+
+    @pyqtSlot()
+    def openStart(self):
+        self.currentPage = self.START_OVER
 
     @pyqtSlot()
     def openResult(self):
         self.currentPage = self.RESULT_PAGE
+        QTimer.singleShot(1000, self.openHome)
 
     @pyqtSlot()
     def agreeProposal(self):
+        self.wealth = self.wealth + self.randomValue
+        self.matcherAccountNum = self.matcherAccountNum + (10-self.randomValue)
         print("同意")
-        self.currentPage = self.RESULT_PAGE
+        self.openResult()
 
     @pyqtSlot()
     def disagreeProposal(self):
+        self.randomValue = 0
         print("不同意")
-        self.currentPage = self.RESULT_PAGE
+        self.openResult()
 
     @pyqtProperty(int, notify=rankChanged)
     def rank(self):
         return self._rank
-
+    
     @rank.setter
     def rank(self, value: int):
         if self._rank != value:
             self._rank = value
             self.rankChanged.emit(value)
 
+    @pyqtProperty(int, notify=matcherAccountNumChanged)
+    def matcherAccountNum(self):
+        return self._matcherAccountNum
+    
+    @matcherAccountNum.setter
+    def matcherAccountNum(self, value: int):
+        if self._matcherAccountNum != value:
+            self._matcherAccountNum = value
+            self.matcherAccountNumChanged.emit(value)
+
+
+
     @pyqtProperty(int, notify=wealthChanged)
     def wealth(self):
         return self._wealth
-
+    
     @wealth.setter
     def wealth(self, value: int):
         if self._wealth != value:
             self._wealth = value
             self.wealthChanged.emit(value)
+
+    @pyqtProperty(int, notify=randomValueChanged)
+    def randomValue(self):
+        return self._randomValue
+
+    @randomValue.setter
+    def randomValue(self, value: int):
+        if self._randomValue != value:
+            self._randomValue = value
+            self.randomValueChanged.emit(value)
 
     @pyqtProperty(str, notify=nameChanged)
     def name(self):

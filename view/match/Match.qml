@@ -7,24 +7,24 @@ Item{
         width: viewModel.contentWidth
         height: viewModel.contentHeight
         anchors.centerIn: parent
-        color: "#222222"
+        color: "black"  // 设置背景颜色为黑色
         Rectangle{
             id: matchRec
             width: parent.width/5
-            height: 32
+            height: 50
             color: parent.color
             border.width: 2
             radius: height/2
             border.color: "#B4CF66"
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.topMargin: 10
+            anchors.topMargin: 40
 
             Text{
                 id: moneyText
                 text: "正在匹配"
                 color: "white"
-                font.pixelSize: 15
+                font.pixelSize: 25
                 anchors.centerIn: parent
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -56,16 +56,6 @@ Item{
                 to: 360
                 duration: 2000
                 easing.type: Easing.InOutQuint;
-            }
-        }
-
-
-       MouseArea {
-            id: buttonMouseArea
-            objectName: "buttonMouseArea"
-            anchors.fill: parent
-            onClicked: {
-                viewModel.openWealthDistribution()
             }
         }
     }

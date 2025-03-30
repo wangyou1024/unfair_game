@@ -5,15 +5,17 @@ Rectangle {
     property int distributionHeight: viewModel.contentHeight/10-5
     height: distributionHeight
     anchors.margins: 5
+    color:"black"
     Row {
         anchors.fill: parent
         spacing: 0
         Text {
             height: distributionHeight
-            text: currentWealth +"元"
+            text: currentWealth+"-" + (currentWealth+19) +"元"
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
-
+            color:"white"
+            font.pixelSize:25
         }
         Repeater {
             model: person  // 使用 PyQt 提供的数量
@@ -28,6 +30,8 @@ Rectangle {
             text: person +"人"
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
+            color:"white"
+            font.pixelSize:25
         }
     }
 }

@@ -4,18 +4,18 @@ Item{
     width: 800; height: 500
     Rectangle {
         id: root
-        width: viewModel.contentWidth-100
+        width: viewModel.contentWidth
         height: viewModel.contentHeight
         anchors.centerIn: parent
-        anchors.margins: 50
-
+        color:"black"
         Rectangle {
             id: matcherProposalRec
-            anchors.left: parent.left
-            width: parent.width*0.7
+            width: (parent.width-200)*0.7
             height: 50
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
+            anchors.left: parent.left // 锚定到父元素左侧
+            anchors.leftMargin: 100   // 左侧留出 100像素间距
         }
 
         Text {
@@ -24,20 +24,25 @@ Item{
             horizontalAlignment: Text.AlignLeft
             anchors.left: matcherProposalRec.left
             anchors.bottom: matcherProposalRec.top
+            font.pixelSize: 25
+            color: "white"
         }
         Text {
             id: matcherProposalText
-            text: "7"
+            text: 10-viewModel.randomValue
             horizontalAlignment: Text.AlignLeft
             anchors.left: matcherProposalRec.left
             anchors.top: matcherProposalRec.bottom
+            font.pixelSize: 25
+            color: "white"
         }
 
 
         Rectangle {
             id: yourProposalRec
             anchors.right: parent.right
-            width: parent.width*0.3
+            anchors.rightMargin: 100
+            width: (parent.width-200)*0.3
             height: 50
             anchors.verticalCenter: parent.verticalCenter
             color: "green"
@@ -49,22 +54,17 @@ Item{
             horizontalAlignment: Text.AlignLeft
             anchors.right: yourProposalRec.right
             anchors.bottom: yourProposalRec.top
+            font.pixelSize: 25
+            color: "white"
         }
         Text {
             id: yourProposalText
-            text: "7"
+            text: viewModel.randomValue
             horizontalAlignment: Text.AlignLeft
             anchors.right: yourProposalRec.right
             anchors.top: yourProposalRec.bottom
-        }
-
-        MouseArea {
-            id: buttonMouseArea
-            objectName: "buttonMouseArea"
-            anchors.fill: parent
-            onClicked: {
-                viewModel.openResult()
-            }
+            font.pixelSize: 25
+            color: "white"
         }
 
         focus: true
@@ -72,6 +72,7 @@ Item{
         Keys.onPressed: {
             if (event.key == Qt.Key_F && viewModel.currentPage == "proposal"){
                 viewModel.agreeProposal()
+                
             }else if(viewModel.currentPage == "proposal"){
                 viewModel.disagreeProposal()
             }

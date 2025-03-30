@@ -1,31 +1,33 @@
 import QtQuick 2.5
 import QtQuick.Particles 2.0
 
-Item{
+Item {
     width: viewModel.contentWidth
     height: viewModel.contentHeight
     property int rootMargin: 30
-
-    property int accountRecWidth: viewModel.contentWidth/10
+    property int accountRecWidth: viewModel.contentWidth / 10
     property int accountSpace: 10
-    property int matcherAccountNum: 234
-    property int yourAccountNum: 100
     property int allocateAccountNum: 10
-
+    
     Rectangle {
         id: root
         width: viewModel.contentWidth
         height: viewModel.contentHeight
         anchors.centerIn: parent
+        color: "black" // 添加这行设置背景颜色为黑色
+
         Row {
+
             anchors.fill: parent
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.leftMargin: rootMargin
+
             Rectangle {
                 id: accountDiff
-                width: viewModel.contentWidth/2
+                width: viewModel.contentWidth / 2
                 height: viewModel.contentHeight
+                color: "black"
                 Text {
                     id: matcherName
                     text: "李显圣"
@@ -33,21 +35,25 @@ Item{
                     anchors.bottom: accountDiff.bottom
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
-                Rectangle{
+                Rectangle {
                     id: matcherRec
                     width: accountRecWidth
-                    height: viewModel.contentHeight-matcherName.height*2
+                    height: viewModel.contentHeight - matcherName.height * 2
                     anchors.bottom: matcherName.top
                     color: "red"
                 }
                 Text {
                     id: matcherAccount
-                    text: matcherAccountNum
+                    text: viewModel.matcherAccountNum
                     width: accountRecWidth
                     anchors.bottom: matcherRec.top
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
 
                 Text {
@@ -59,23 +65,27 @@ Item{
                     anchors.leftMargin: accountSpace
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
-                Rectangle{
+                Rectangle {
                     id: yourRec
                     width: accountRecWidth
-                    height: matcherRec.height*(yourAccountNum/matcherAccountNum)
+                    height: matcherRec.height * (viewModel.wealth / viewModel.matcherAccountNum)
                     anchors.bottom: yourName.top
                     anchors.left: yourName.left
                     color: "green"
                 }
                 Text {
                     id: yourAccount
-                    text: yourAccountNum
+                    text: viewModel.wealth
                     width: accountRecWidth
                     anchors.bottom: yourRec.top
                     anchors.left: yourName.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
 
                 Text {
@@ -87,12 +97,14 @@ Item{
                     anchors.leftMargin: accountSpace
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
 
                 Rectangle {
                     id: allocateAccountRec
                     width: accountRecWidth
-                    height: matcherRec.height*(allocateAccountNum/matcherAccountNum)
+                    height: matcherRec.height * (allocateAccountNum / viewModel.matcherAccountNum)
                     anchors.top: allocateAccount.bottom
                     anchors.left: allocateAccount.left
                     color: "gray"
@@ -106,6 +118,8 @@ Item{
                     anchors.left: allocateAccountRec.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 25
+                    color: "white"
                 }
 
                 ParallelAnimation {
@@ -130,66 +144,67 @@ Item{
             }
             Rectangle {
                 id: distribution
-                width: viewModel.contentWidth/2
+                width: viewModel.contentWidth / 2
                 height: viewModel.contentHeight
-                DistributionItem{
+                color: "black"
+                DistributionItem {
                     id: accountPerson9
                     anchors.top: parent.top
-                    currentWealth: yourAccountNum+9
+                    currentWealth: viewModel.wealth+180
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson8
                     anchors.top: accountPerson9.bottom
-                    currentWealth: yourAccountNum+8
+                    currentWealth: viewModel.wealth + 160
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson7
                     anchors.top: accountPerson8.bottom
-                    currentWealth: yourAccountNum+7
+                    currentWealth: viewModel.wealth + 140
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson6
                     anchors.top: accountPerson7.bottom
-                    currentWealth: yourAccountNum+6
+                    currentWealth: viewModel.wealth + 120
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson5
                     anchors.top: accountPerson6.bottom
-                    currentWealth: yourAccountNum+5
+                    currentWealth: viewModel.wealth + 100
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson4
                     anchors.top: accountPerson5.bottom
-                    currentWealth: yourAccountNum+4
+                    currentWealth: viewModel.wealth + 80
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson3
                     anchors.top: accountPerson4.bottom
-                    currentWealth: yourAccountNum+3
+                    currentWealth: viewModel.wealth + 60
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson2
                     anchors.top: accountPerson3.bottom
-                    currentWealth: yourAccountNum+2
+                    currentWealth: viewModel.wealth + 40
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson1
                     anchors.top: accountPerson2.bottom
-                    currentWealth: yourAccountNum+1
+                    currentWealth: viewModel.wealth + 20
                     person: 3
                 }
-                DistributionItem{
+                DistributionItem {
                     id: accountPerson0
                     anchors.top: accountPerson1.bottom
-                    currentWealth: yourAccountNum+0
+                    currentWealth: viewModel.wealth
                     person: 3
                 }
             }
@@ -201,7 +216,7 @@ Item{
         objectName: "buttonMouseArea"
         anchors.fill: parent
         onClicked: {
-             viewModel.openProposal()
+            viewModel.openWaitProposal()
         }
     }
 
@@ -211,5 +226,4 @@ Item{
             parallelAnimation.start()  // 当 visible 变为 true 时启动动画
         }
     }
-
 }
