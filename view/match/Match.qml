@@ -40,8 +40,14 @@ Item{
         }
 
          // 在组件加载完成时启动动画
-        Component.onCompleted: {
-            imageAnimation.start()
+        // Component.onCompleted: {
+        //     imageAnimation.start()
+        // }
+
+        onVisibleChanged: {
+            if (visible) {
+                imageAnimation.start()  // 当 visible 变为 true 时启动动画
+            }
         }
 
 

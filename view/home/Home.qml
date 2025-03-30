@@ -107,7 +107,7 @@ Item{
             anchors.left:rankTitle.left
 
             Text{
-                text: viewModel.rank+"/1200"
+                text: viewModel.rank+"/150"
                 color: "white"
                 font.pixelSize: 15
                 anchors.centerIn: parent

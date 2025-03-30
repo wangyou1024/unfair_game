@@ -10,7 +10,7 @@ Item{
         color:"black"
         Rectangle {
             id: matcherProposalRec
-            width: (parent.width-200)*0.7
+            width: (parent.width-200)*(10-viewModel.randomValue)/10
             height: 50
             anchors.verticalCenter: parent.verticalCenter
             color: "red"
@@ -29,7 +29,7 @@ Item{
         }
         Text {
             id: matcherProposalText
-            text: 10-viewModel.randomValue
+            text: (10-viewModel.randomValue)+"元"
             horizontalAlignment: Text.AlignLeft
             anchors.left: matcherProposalRec.left
             anchors.top: matcherProposalRec.bottom
@@ -42,7 +42,7 @@ Item{
             id: yourProposalRec
             anchors.right: parent.right
             anchors.rightMargin: 100
-            width: (parent.width-200)*0.3
+            width: matcherProposalRec.width*(viewModel.randomValue/(10-viewModel.randomValue))
             height: 50
             anchors.verticalCenter: parent.verticalCenter
             color: "green"
@@ -59,7 +59,7 @@ Item{
         }
         Text {
             id: yourProposalText
-            text: viewModel.randomValue
+            text: viewModel.randomValue+"元"
             horizontalAlignment: Text.AlignLeft
             anchors.right: yourProposalRec.right
             anchors.top: yourProposalRec.bottom
@@ -67,14 +67,31 @@ Item{
             color: "white"
         }
 
+        PropertyAnimation {
+            id: proposalAnimation
+            target: matcherProposalRec
+            property: "width"
+            from: 1
+            to: matcherProposalRec.width
+            duration: 1000
+            easing.type: Easing.InOutQuint;
+        }
+
         focus: true
         Keys.enabled: true
         Keys.onPressed: {
-            if (event.key == Qt.Key_F && viewModel.currentPage == "proposal"){
+            if (event.key == Qt.Key_4 && viewModel.currentPage == "proposal"){
                 viewModel.agreeProposal()
                 
-            }else if(viewModel.currentPage == "proposal"){
+            }else if(event.key == Qt.Key_6 && viewModel.currentPage == "proposal"){
                 viewModel.disagreeProposal()
+            }
+        }
+
+            // 监听 visible 属性的变化
+        onVisibleChanged: {
+            if (visible) {
+                proposalAnimation.start()  // 当 visible 变为 true 时启动动画
             }
         }
     }

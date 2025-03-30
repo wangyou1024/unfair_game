@@ -30,9 +30,11 @@ Item {
                 color: "black"
                 Text {
                     id: matcherName
-                    text: "李显圣"
+                    text: viewModel.matcherName
                     width: accountRecWidth
                     anchors.bottom: accountDiff.bottom
+                    anchors.left: accountDiff.left
+                    anchors.leftMargin: accountDiff.width-3*accountRecWidth-3*accountSpace-50
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 25
@@ -43,13 +45,15 @@ Item {
                     width: accountRecWidth
                     height: viewModel.contentHeight - matcherName.height * 2
                     anchors.bottom: matcherName.top
+                    anchors.left: matcherName.left
                     color: "red"
                 }
                 Text {
                     id: matcherAccount
-                    text: viewModel.matcherAccountNum
+                    text: viewModel.matcherWealth+"元"
                     width: accountRecWidth
                     anchors.bottom: matcherRec.top
+                    anchors.left: matcherName.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 25
@@ -71,14 +75,14 @@ Item {
                 Rectangle {
                     id: yourRec
                     width: accountRecWidth
-                    height: matcherRec.height * (viewModel.wealth / viewModel.matcherAccountNum)
+                    height: matcherRec.height * (viewModel.wealth / viewModel.matcherWealth)
                     anchors.bottom: yourName.top
                     anchors.left: yourName.left
                     color: "green"
                 }
                 Text {
                     id: yourAccount
-                    text: viewModel.wealth
+                    text: viewModel.wealth+"元"
                     width: accountRecWidth
                     anchors.bottom: yourRec.top
                     anchors.left: yourName.left
@@ -90,7 +94,7 @@ Item {
 
                 Text {
                     id: allocateAccount
-                    text: "10"
+                    text: "10元"
                     width: accountRecWidth
                     anchors.top: accountDiff.top
                     anchors.left: yourName.right
@@ -104,7 +108,7 @@ Item {
                 Rectangle {
                     id: allocateAccountRec
                     width: accountRecWidth
-                    height: matcherRec.height * (allocateAccountNum / viewModel.matcherAccountNum)
+                    height: matcherRec.height * (allocateAccountNum / viewModel.matcherWealth)
                     anchors.top: allocateAccount.bottom
                     anchors.left: allocateAccount.left
                     color: "gray"
@@ -131,14 +135,7 @@ Item {
                         from: 1
                         to: matcherRec.height
                         duration: 1000
-                    }
-                    PropertyAnimation {
-                        id: yourAnimation
-                        target: yourRec
-                        property: "height"
-                        from: 1
-                        to: yourRec.height
-                        duration: 1000
+                        easing.type: Easing.InOutQuint;
                     }
                 }
             }
@@ -150,62 +147,72 @@ Item {
                 DistributionItem {
                     id: accountPerson9
                     anchors.top: parent.top
+                    anchors.leftMargin: 50
                     currentWealth: viewModel.wealth+180
-                    person: 3
+                    person: viewModel.wealth180_199
                 }
                 DistributionItem {
                     id: accountPerson8
                     anchors.top: accountPerson9.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 160
-                    person: 3
+                    person: viewModel.wealth160_179
                 }
                 DistributionItem {
                     id: accountPerson7
                     anchors.top: accountPerson8.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 140
-                    person: 3
+                    person: viewModel.wealth140_159
                 }
                 DistributionItem {
                     id: accountPerson6
                     anchors.top: accountPerson7.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 120
-                    person: 3
+                    person: viewModel.wealth120_139
                 }
                 DistributionItem {
                     id: accountPerson5
                     anchors.top: accountPerson6.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 100
-                    person: 3
+                    person: viewModel.wealth100_119
                 }
                 DistributionItem {
                     id: accountPerson4
                     anchors.top: accountPerson5.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 80
-                    person: 3
+                    person: viewModel.wealth80_99
                 }
                 DistributionItem {
                     id: accountPerson3
                     anchors.top: accountPerson4.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 60
-                    person: 3
+                    person: viewModel.wealth60_79
                 }
                 DistributionItem {
                     id: accountPerson2
                     anchors.top: accountPerson3.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 40
-                    person: 3
+                    person: viewModel.wealth40_59
                 }
                 DistributionItem {
                     id: accountPerson1
                     anchors.top: accountPerson2.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth + 20
-                    person: 3
+                    person: viewModel.wealth20_39
                 }
                 DistributionItem {
                     id: accountPerson0
                     anchors.top: accountPerson1.bottom
+                    anchors.left: accountPerson9.left
                     currentWealth: viewModel.wealth
-                    person: 3
+                    person: viewModel.wealth0_19
                 }
             }
         }

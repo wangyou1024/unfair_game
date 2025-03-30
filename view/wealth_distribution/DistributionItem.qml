@@ -27,7 +27,7 @@ Rectangle {
         }
         Text {
             height: distributionHeight
-            text: person +"人"
+            text: "  " + person +"人"
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignVCenter
             color:"white"
