@@ -167,7 +167,10 @@ class ViewModel(QObject):
             index = math.floor((self.personList[i].account - self.personList[self.youIndex].account)/20)
             if index > 9:
                 break
-            new_last_200[index] = new_last_200[index]+1
+            if index >= 0 and index <=9:
+                new_last_200[index] = new_last_200[index]+1
+        # 去掉被试自己
+        new_last_200[0] = new_last_200[0]-1
         self.wealth0_19 = new_last_200[0]
         self.wealth20_39 = new_last_200[1]
         self.wealth40_59 = new_last_200[2]
