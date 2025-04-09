@@ -20,7 +20,7 @@ Item{
 
         Text {
             id: matcherName
-            text: "李显圣"
+            text: "对方"
             horizontalAlignment: Text.AlignLeft
             anchors.left: matcherProposalRec.left
             anchors.bottom: matcherProposalRec.top

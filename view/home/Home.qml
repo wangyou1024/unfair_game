@@ -27,20 +27,23 @@ Item{
             anchors.left:parent.left
             anchors.leftMargin: parent.width/5
             anchors.topMargin: 50
+            // 居中
+            anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
 
         Rectangle{
             id: accountRec
-            width: moneyTitle.width
+            width: parent.width/7
             height: 32
             color: parent.color
             border.width: 2
             radius: height/2
             border.color: yellow
             anchors.top: moneyTitle.bottom
-            anchors.left:moneyTitle.left
+            // 居中
+            anchors.horizontalCenter: parent.horizontalCenter
 
             Text{
                 id: moneyText
@@ -81,40 +84,40 @@ Item{
 
         }
 
-        Text {
-            id: rankTitle
-            text: "RANK"
-            width: moneyTitle.width
-            color: "white"
-            font.pixelSize: fontSize
-            anchors.top: moneyTitle.top
-            anchors.right:parent.right
-            anchors.rightMargin: moneyTitle.anchors.leftMargin
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
+        // Text {
+        //     id: rankTitle
+        //     text: "RANK"
+        //     width: moneyTitle.width
+        //     color: "white"
+        //     font.pixelSize: fontSize
+        //     anchors.top: moneyTitle.top
+        //     anchors.right:parent.right
+        //     anchors.rightMargin: moneyTitle.anchors.leftMargin
+        //     horizontalAlignment: Text.AlignHCenter
+        //     verticalAlignment: Text.AlignVCenter
+        // }
 
        
-        Rectangle{
-            id: rankRec
-            width: accountRec.width
-            height: accountRec.height
-            color: parent.color
-            border.width: accountRec.border.width
-            radius: height/2
-            border.color: accountRec.border.color
-            anchors.top: rankTitle.bottom
-            anchors.left:rankTitle.left
+        // Rectangle{
+        //     id: rankRec
+        //     width: accountRec.width
+        //     height: accountRec.height
+        //     color: parent.color
+        //     border.width: accountRec.border.width
+        //     radius: height/2
+        //     border.color: accountRec.border.color
+        //     anchors.top: rankTitle.bottom
+        //     anchors.left:rankTitle.left
 
-            Text{
-                text: viewModel.rank+"/150"
-                color: "white"
-                font.pixelSize: 15
-                anchors.centerIn: parent
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
-        }
+        //     Text{
+        //         text: viewModel.rank+"/150"
+        //         color: "white"
+        //         font.pixelSize: 15
+        //         anchors.centerIn: parent
+        //         horizontalAlignment: Text.AlignHCenter
+        //         verticalAlignment: Text.AlignVCenter
+        //     }
+        // }
 
         
         Rectangle{

@@ -23,7 +23,7 @@ class ViewModel(QObject):
         self._current_page = self.HOME_PAGE
         self._randomValue = 1
         self._matcher_wealth=234
-        self._matcher_name = "李显圣"
+        self._matcher_name = "对方"
         self.personList: list[Person] = []
         self.youIndex = 0
         self.matcherIndex = 0
@@ -101,14 +101,16 @@ class ViewModel(QObject):
             if temp_number >= 1 and temp_sum + temp_number <= real_sum:
                 number_array.append(temp_number)
                 for j in range(temp_number):
-                    self.personList.append(Person(lines[temp_sum+j], random.randint(lower_index, i+gap)))
+                    # self.personList.append(Person(lines[temp_sum+j], random.randint(lower_index, i+gap)))
+                    self.personList.append(Person("对方", random.randint(lower_index, i+gap)))
                 # 比例达不到1人时，向后累加
                 lower_index = i+gap
             elif temp_sum + temp_number > real_sum and temp_sum < real_sum:
                 temp_number = real_sum - temp_sum
                 number_array.append(temp_number)
                 for j in range(temp_number):
-                    self.personList.append(Person(lines[temp_sum+j], random.randint(lower_index, i+gap)))
+                    # self.personList.append(Person(lines[temp_sum+j], random.randint(lower_index, i+gap)))
+                    self.personList.append(Person("对方", random.randint(lower_index, i+gap)))
             else:
                 temp_number = 0
                 number_array.append(temp_number)

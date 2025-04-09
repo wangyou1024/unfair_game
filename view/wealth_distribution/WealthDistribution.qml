@@ -27,6 +27,8 @@ Item {
                 id: accountDiff
                 width: viewModel.contentWidth / 2
                 height: viewModel.contentHeight
+                // 居中
+                anchors.horizontalCenter: parent.horizontalCenter
                 color: "black"
                 Text {
                     id: matcherName
@@ -139,82 +141,82 @@ Item {
                     }
                 }
             }
-            Rectangle {
-                id: distribution
-                width: viewModel.contentWidth / 2
-                height: viewModel.contentHeight
-                color: "black"
-                DistributionItem {
-                    id: accountPerson9
-                    anchors.top: parent.top
-                    anchors.leftMargin: 50
-                    currentWealth: viewModel.wealth+180
-                    person: viewModel.wealth180_199
-                }
-                DistributionItem {
-                    id: accountPerson8
-                    anchors.top: accountPerson9.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 160
-                    person: viewModel.wealth160_179
-                }
-                DistributionItem {
-                    id: accountPerson7
-                    anchors.top: accountPerson8.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 140
-                    person: viewModel.wealth140_159
-                }
-                DistributionItem {
-                    id: accountPerson6
-                    anchors.top: accountPerson7.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 120
-                    person: viewModel.wealth120_139
-                }
-                DistributionItem {
-                    id: accountPerson5
-                    anchors.top: accountPerson6.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 100
-                    person: viewModel.wealth100_119
-                }
-                DistributionItem {
-                    id: accountPerson4
-                    anchors.top: accountPerson5.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 80
-                    person: viewModel.wealth80_99
-                }
-                DistributionItem {
-                    id: accountPerson3
-                    anchors.top: accountPerson4.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 60
-                    person: viewModel.wealth60_79
-                }
-                DistributionItem {
-                    id: accountPerson2
-                    anchors.top: accountPerson3.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 40
-                    person: viewModel.wealth40_59
-                }
-                DistributionItem {
-                    id: accountPerson1
-                    anchors.top: accountPerson2.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth + 20
-                    person: viewModel.wealth20_39
-                }
-                DistributionItem {
-                    id: accountPerson0
-                    anchors.top: accountPerson1.bottom
-                    anchors.left: accountPerson9.left
-                    currentWealth: viewModel.wealth
-                    person: viewModel.wealth0_19
-                }
-            }
+        //     Rectangle {
+        //         id: distribution
+        //         width: viewModel.contentWidth / 2
+        //         height: viewModel.contentHeight
+        //         color: "black"
+        //         DistributionItem {
+        //             id: accountPerson9
+        //             anchors.top: parent.top
+        //             anchors.leftMargin: 50
+        //             currentWealth: viewModel.wealth+180
+        //             person: viewModel.wealth180_199
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson8
+        //             anchors.top: accountPerson9.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 160
+        //             person: viewModel.wealth160_179
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson7
+        //             anchors.top: accountPerson8.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 140
+        //             person: viewModel.wealth140_159
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson6
+        //             anchors.top: accountPerson7.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 120
+        //             person: viewModel.wealth120_139
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson5
+        //             anchors.top: accountPerson6.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 100
+        //             person: viewModel.wealth100_119
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson4
+        //             anchors.top: accountPerson5.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 80
+        //             person: viewModel.wealth80_99
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson3
+        //             anchors.top: accountPerson4.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 60
+        //             person: viewModel.wealth60_79
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson2
+        //             anchors.top: accountPerson3.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 40
+        //             person: viewModel.wealth40_59
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson1
+        //             anchors.top: accountPerson2.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth + 20
+        //             person: viewModel.wealth20_39
+        //         }
+        //         DistributionItem {
+        //             id: accountPerson0
+        //             anchors.top: accountPerson1.bottom
+        //             anchors.left: accountPerson9.left
+        //             currentWealth: viewModel.wealth
+        //             person: viewModel.wealth0_19
+        //         }
+        //     }
         }
     }
 
